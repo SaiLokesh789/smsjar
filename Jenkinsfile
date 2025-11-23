@@ -44,13 +44,13 @@ pipeline {
                 script {
                     withEnv(["KUBECONFIG=$HOME/.kube/config"]) {
 
-                        sh "envsubst < k8s/namespace-template.yaml > k8s/namespace.yaml"
-                        sh "envsubst < k8s/deployment-template.yaml > k8s/deployment.yaml"
-                        sh "envsubst < k8s/service-template.yaml > k8s/service.yaml"
+                        sh "envsubst < k8s/namespace-template.yaml > namespace.yaml"
+                        sh "envsubst < k8s/deployment-template.yaml > deployment.yaml"
+                        sh "envsubst < k8s/service-template.yaml > service.yaml"
 
-                        sh "kubectl apply -f k8s/namespace.yaml --validate=false"
-                        sh "kubectl apply -f k8s/deployment.yaml --validate=false"
-                        sh "kubectl apply -f k8s/service.yaml --validate=false"
+                        sh "kubectl apply -f namespace.yaml --validate=false"
+                        sh "kubectl apply -f deployment.yaml --validate=false"
+                        sh "kubectl apply -f service.yaml --validate=false"
                     }
                 }
             }
