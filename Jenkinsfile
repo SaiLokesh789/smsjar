@@ -44,9 +44,9 @@ pipeline {
                 script {
                     withEnv(["KUBECONFIG=$HOME/.kube/config"]) {
 
-                        sh "envsubst < k8s/namespace-template.yaml > namespace.yaml"
-                        sh "envsubst < k8s/deployment-template.yaml > deployment.yaml"
-                        sh "envsubst < k8s/service-template.yaml > service.yaml"
+                        sh "envsubst < namespace.yaml > namespace.yaml"
+                        sh "envsubst < deployment.yaml > deployment.yaml"
+                        sh "envsubst < service.yaml > service.yaml"
 
                         sh "kubectl apply -f namespace.yaml --validate=false"
                         sh "kubectl apply -f deployment.yaml --validate=false"
